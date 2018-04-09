@@ -1,0 +1,64 @@
+﻿@model IEnumerable<AssessmentHC.Models.Person>
+
+
+    @if (Model.Count() != 0)
+    {
+
+        <div class="content">
+            <table class="table">
+                <tr>
+                    <th>
+
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Age)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Address)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Interests)
+                    </th>
+                </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @if (item.ProfileImgPath != null)
+                            {
+                                <img class="img-thumbnail" width="80px" height="80px" src="@Url.Content(item.ProfileImgPath)" alt="Image" />
+                            }
+                            else
+                            {
+                                <img class="img-thumbnail" width="80px" height="80px" src="@Url.Content("~/Content/ProfileImages/Sample.png")" alt="Image" />
+                            }
+                        </td>
+                        <td>
+
+                            @Html.DisplayFor(modelItem => item.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Address)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Interests)
+                        </td>
+
+                     </tr>
+                }
+
+            </table>
+        </div>
+    }
+    else
+    {
+    <div class="col-md-4 col-md-offset-4">
+        <p>No Data Available</p>
+    </div>
+}
